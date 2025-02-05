@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Georgia Tech Movie Store</title>
+    {% load static %}
+    <link rel="style sheet" href="{% static 'MovieLibrary/css/main.css' %}">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <img src="{% static 'MovieLibrary/images/GTVertical_RGB.png' %}" alt="GT Logo" class="gt-logo">
+            <h1 class="store-title">Georgia Tech Movie Store</h1>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="welcome-section">
+            <h2 class="welcome-title">Welcome to the Georgia Tech Movie Store!</h2>
+            <p class="welcome-text">
+                this website will allow you to browse, search, shop, and review films!
+                <!--More info about the store should go here-->
+            </p>
+        </div>
+        <div class="auth-section">
+            <h3 class="auth-title">Account Sign-in</h3>
+            <div class="auth-buttons">
+                <button class="auth-btn register">Register</button>
+                <button class="auth-btn login">Log In</button>
+            </div>
+        </div>
+    </main>
+    
+
+    <script src="{% static 'MovieLibrary/js/main.js' %}"></script>
+</body>
+</html>
