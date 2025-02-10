@@ -31,8 +31,55 @@
             </div>
         </div>
     </main>
+
+
     
 
     <script src="{% static 'MovieLibrary/js/main.js' %}"></script>
+</body>
+</html>
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        input[type="text"] {
+            width: 300px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 15px;
+            font-size: 16px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Search for Products</h1>
+
+    <form method="GET" >
+        <input type="text" name="query" placeholder="Type to search..." required>
+        <button type="submit">Search</button>
+    </form>
+
 </body>
 </html>
