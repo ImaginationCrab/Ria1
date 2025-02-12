@@ -11,10 +11,12 @@ def landing(request):
     return render(request, "movielibrary/landing.html")
 
 def registration(request):
-    return HttpResponse("Yo dis the registration page")
+    template = loader.get_template("movielibrary/registration.html")
+    return render(request, "movielibrary/registration.html")
 
 def login(request):
-    return HttpResponse("Yo dis the login page")
+    template = loader.get_template("movielibrary/login.html")
+    return render(request, "movielibrary/login.html")
 
 def logout(request):
     return HttpResponse("Yo dis the logout page")

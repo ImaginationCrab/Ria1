@@ -5,32 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Georgia Tech Movie Store</title>
     {% load static %}
-    <link rel="style sheet" href="{% static 'MovieLibrary/css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'MovieLibrary/css/main.css' %}">
 </head>
 <body>
-    <header>
+    <header class="header-box">
         <div class="header-content">
-            <img src="{% static 'MovieLibrary/images/GTVertical_RGB.png' %}" alt="GT Logo" class="gt-logo" style="width: 100px; height: auto;">
-            <h1 class="store-title">Georgia Tech Movie Store</h1>
+            <div class="header-inner">
+                <img src="{% static 'MovieLibrary/images/GTVertical_RGB.png' %}" alt="GT Logo" class="gt-logo" style="width: 100px; height: auto;">
+                <h1 class="store-title">Georgia Tech Movie Store</h1>
+            </div>
         </div>
     </header>
 
-    <main class="main-content">
-        <div class="welcome-section">
-            <h2 class="welcome-title">Welcome to the Georgia Tech Movie Store!</h2>
-            <p class="welcome-text">
-                this website will allow you to browse, search, shop, and review films!
-                <!--More info about the store should go here-->
-            </p>
-        </div>
-        <div class="auth-section">
-            <h3 class="auth-title">Account Sign-in</h3>
-            <div class="auth-buttons">
-                 <a href="/registration"><button>Register</button></a>
-                 <a href="/login"><button>Login</button></a>
-
-
-            </div>
+    <main class="main-box">
+        <div class="main-content">
+                <div class="welcome-section">
+                    <h2 class="welcome-title">Welcome to the Georgia Tech Movie Store!</h2>
+                    <p class="welcome-text">
+                        this website will allow you to browse, search, shop, and review films!
+                        <!--More info about the store should go here-->
+                    </p>
+                </div>
+                <div class="auth-section">
+                    <h3 class="auth-title">Account Sign-in</h3>
+                    <div class="auth-buttons">
+                         <a href="/registration"><button>Register</button></a>
+                         <a href="/login"><button>Login</button></a>
+                    </div>
+                </div>
         </div>
     </main>
 
@@ -40,7 +42,7 @@
     <script src="{% static 'MovieLibrary/js/main.js' %}"></script>
 </body>
 </html>
-
+<!--
     <title>Search Page</title>
     <style>
         body {
@@ -79,4 +81,4 @@
     </form>
 
 </body>
-</html>
+</html> -->
