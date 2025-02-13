@@ -1,14 +1,10 @@
 from django.shortcuts import render
-
+from .models import Movie
 # Create your views here.
-movies = [
-    {
-        'id': 1, 'name': "whatever", 'price': 500, 'description': "whatever is in it"
-    },
-]
+
 
 def index(request):
     template_data = {}
     template_data['title'] = 'movies'
-    template_data['movies'] = movies
-    return render(request, 'movies/index.html', {'template_data': template_data})
+    template_data['movies'] = Movie.objects.all()
+    return render(request, 'movies/index.html', {'templaste_data': template_data})
