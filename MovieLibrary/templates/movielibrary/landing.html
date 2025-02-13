@@ -5,34 +5,80 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Georgia Tech Movie Store</title>
     {% load static %}
-    <link rel="style sheet" href="{% static 'MovieLibrary/css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'MovieLibrary/css/main.css' %}">
 </head>
 <body>
-    <header>
+    <header class="header-box">
         <div class="header-content">
-            <img src="{% static 'MovieLibrary/images/GTVertical_RGB.png' %}" alt="GT Logo" class="gt-logo">
-            <h1 class="store-title">Georgia Tech Movie Store</h1>
+            <div class="header-inner">
+                <img src="{% static 'MovieLibrary/images/GTVertical_RGB.png' %}" alt="GT Logo" class="gt-logo" style="width: 100px; height: auto;">
+                <h1 class="store-title">Georgia Tech Movie Store</h1>
+            </div>
         </div>
     </header>
 
-    <main class="main-content">
-        <div class="welcome-section">
-            <h2 class="welcome-title">Welcome to the Georgia Tech Movie Store!</h2>
-            <p class="welcome-text">
-                this website will allow you to browse, search, shop, and review films!
-                <!--More info about the store should go here-->
-            </p>
-        </div>
-        <div class="auth-section">
-            <h3 class="auth-title">Account Sign-in</h3>
-            <div class="auth-buttons">
-                <button class="auth-btn register">Register</button>
-                <button class="auth-btn login">Log In</button>
-            </div>
+    <main class="main-box">
+        <div class="main-content">
+                <div class="welcome-section">
+                    <h2 class="welcome-title">Welcome to the Georgia Tech Movie Store!</h2>
+                    <p class="welcome-text">
+                        this website will allow you to browse, search, shop, and review films!
+                        <!--More info about the store should go here-->
+                    </p>
+                </div>
+                <div class="auth-section">
+                    <h3 class="auth-title">Account Sign-in</h3>
+                    <div class="auth-buttons">
+                         <a href="/registration"><button>Register</button></a>
+                         <a href="/login"><button>Login</button></a>
+                    </div>
+                </div>
         </div>
     </main>
+
+
     
 
     <script src="{% static 'MovieLibrary/js/main.js' %}"></script>
 </body>
 </html>
+<!--
+    <title>Search Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        input[type="text"] {
+            width: 300px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 15px;
+            font-size: 16px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Search for Products</h1>
+
+    <form method="GET" >
+        <input type="text" name="query" placeholder="Type to search..." required>
+        <button type="submit">Search</button>
+    </form>
+
+</body>
+</html> -->

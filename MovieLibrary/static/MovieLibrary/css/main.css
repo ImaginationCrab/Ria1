@@ -18,12 +18,14 @@ body { /*Style Settings for the body*/
     font-weight: 700;
     color: var(--gt-gold);
     margin: 0;
+    opacity: 1;
 }
 
-.header {
-    background-color: rgba(0, 0, 0, 0.8);
+.header-box {
+    background-color: rgba(0, 0, 0, 0.45);
     padding: 1rem;
     border-radius: 25px;
+    border: 2px solid var(--gt-gold);
     margin: 1rem;
 }
 
@@ -33,6 +35,10 @@ body { /*Style Settings for the body*/
     gap: 1rem;
     max-width: 1200px;
     margin: 0 auto;
+}
+
+.header-inner {
+    
 }
 
 .gt-logo {
@@ -47,10 +53,18 @@ body { /*Style Settings for the body*/
     color: var(--gt-gold);
     margin: 0;
 }
-
+.main-box {
+    background-color: rgba(0, 0, 0, 0.45);
+    padding: 1rem;
+    border-radius: 25px;
+    margin: 2rem auto;
+    border: 2px solid var(--gt-gold);
+    max-width: 600px;
+    max-height: 600px;
+}
 .main-content {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr; /* Create two columns */
     gap: 2rem;
     max-width: 1200px;
     margin: 2rem auto;
@@ -59,6 +73,19 @@ body { /*Style Settings for the body*/
 
 .welcome-section {
     color: var(--gt-gold);
+}
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.auth-form label {
+    font-weight: 700;
+}
+.auth-form input {
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: 1px solid var(--gt-gold);
 }
 
 .auth-section {
