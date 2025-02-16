@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Page</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'MovieLibrary/css/main.css' %}">
+</head>
+<body>
+    <!-- Header used on the movies page -->
+    <header class="header-box">
+        <div class="header-content">
+            <div class="header-column logo">
+                <img src="{% static 'MovieLibrary/images/GTVertical_RGB.png' %}" alt="GT Logo" class="gt-logo" style="width: 100px; height: auto;">
+            </div>
+            <div class="header-column title">
+                <h1 class="store-title">Georgia Tech Movie Store</h1>
+            </div>
+            <div class="header-column nav-links">
+                <nav>
+                    <a href="/about">About</a>
+                    <a href="/moviespage">Movies</a>
+                    <a href="/account">Account</a>
+                    <a href="/cart">Cart</a>
+                </nav>
+            </div>
+            <div class="header-column search-bar">
+                <input type="text" id="searchInput" placeholder="Search for movies...">
+            </div>
+        </div>
+    </header>
+
+    <main class="main-box">
+        <div class="main-content">
+            <section class="profile">
+                <img src="{{ user.profile_image.url }}" alt="Profile Image" class="profile-image">
+                <h2>{{ user.username }}</h2>
+                <form action="{% url 'logout' %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="auth-btn">Log Out</button>
+                </form>
+            </section>
+
+            <section class="reviews">
+                <h3>Your Reviews</h3>
+                <ul>
+                    {% for review in user.reviews.all %}
+                        <li>
+                            <h4>{{ review.movie.title }}</h4>
+                            <p>{{ review.content }}</p>
+                            <small>Rating: {{ review.rating }}</small>
+                        </li>
+                    {% empty %}
+                        <li>You have not made any reviews yet.</li>
+                    {% endfor %}
+                </ul>
+            </section>
+        </div>
+    </main>
+
+    <script src="{% static 'MovieLibrary/js/main.js' %}"></script>
+</body>
+</html>

@@ -4,14 +4,17 @@
     --gt-gold: #b3a369;
     --gt-navy: #003057;
     --dark-bg: #1a1a2e;
-}
+    --button-gradient-start: #011525;
+    --button-gradient-end: #010d1a;
+    --button-hover-gradient-start: #b3a369;
+    --button-hover-gradient-end: #d4af37;
+} /*Root Variables for the color scheme (CSS can't exist without pain)*/ 
 
 body { /*Style Settings for the body*/
     margin: 0;
     padding: 0;
     font-family: 'Roboto Slab', serif;
-    background-color: var(--dark-bg);
-    color: var(--gt-gold);
+    background-image: url('../images/bgLandscape.png');
 }
 .store-title{
     font-family: 'Roboto Slab', serif;
@@ -32,22 +35,48 @@ body { /*Style Settings for the body*/
 .header-content {
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.header-column {
+    flex: 1;
+    text-align: center;
+    position: relative;
+}
+
+.header-column:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 25%;
+    bottom: 25%;
+    width: 2px;
+    background-color: var(--gt-gold);
+}
+
+.header-content-M {
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
     gap: 1rem;
     max-width: 1200px;
     margin: 0 auto;
 }
 
-.header-inner {
-    
-}
-
 .gt-logo {
     height: 50px;
+    margin: 0;
+    padding: 0;
 }
 
 .welcome-text {
     font-family: 'Roboto Slab', serif;
     font-weight: 400;
+    padding-right: 1rem;
 }
 .store-title {
     color: var(--gt-gold);
@@ -59,16 +88,67 @@ body { /*Style Settings for the body*/
     border-radius: 25px;
     margin: 2rem auto;
     border: 2px solid var(--gt-gold);
-    max-width: 600px;
-    max-height: 600px;
+    max-width: 800px;
 }
+
 .main-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* Create two columns */
-    gap: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem; /* Reduce the gap between columns */
     max-width: 1200px;
-    margin: 2rem auto;
-    padding: 0 1rem;
+    margin: 0 auto;
+    position: relative;
+}
+
+.main-column {
+    flex: 1;
+    text-align: center;
+    position: relative;
+}
+
+.main-column:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 10%;
+    bottom: 10%;
+    width: 2px;
+    background-color: var(--gt-gold);
+}
+.moviesOuter {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem auto;
+    flex-wrap: wrap;
+}
+.moviesInner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.LoginRegister-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 1rem;
+    font-family: 'Roboto Slab', serif;
+    color: var(--gt-gold);
+}
+.nav-links nav {
+    display: flex;
+    gap: 1rem;
+}
+
+.nav-links a {
+    color: var(--gt-gold);
+    font-family: 'Roboto Slab', serif;
+    text-decoration: none; /* Remove underline */
+    font-weight: 700;
+}
+
+.nav-links a:hover {
+    text-decoration: underline;
 }
 
 .welcome-section {
@@ -78,16 +158,30 @@ body { /*Style Settings for the body*/
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    font-family: 'Roboto Slab', serif;
+    color: var(--gt-gold);
 }
 .auth-form label {
     font-weight: 700;
+    font-family: 'Roboto Slab', serif;
+    color: var(--gt-gold);
 }
 .auth-form input {
     padding: 0.5rem;
     border-radius: 5px;
     border: 1px solid var(--gt-gold);
+    font-family: 'Roboto Slab', serif;
+    color: var(--gt-gold);
+    
 }
-
+.auth-title {
+    font-family: 'Roboto Slab', serif;
+    font-weight: 700;
+    color: var(--gt-gold);
+    margin: 0;
+    opacity: 1;
+    text-align: center;
+}
 .auth-section {
     text-align: center;
 }
@@ -99,21 +193,195 @@ body { /*Style Settings for the body*/
 }
 
 .auth-btn {
+    display: inline-block; /* Ensure the anchor tag is displayed as a block */
     padding: 0.8rem 2rem;
     border: 2px solid var(--gt-gold);
-    background-color: transparent;
+    background: linear-gradient(to right, var(--button-gradient-start), var(--button-gradient-end));
     color: var(--gt-gold);
-    border-radius: 5px;
+    border-radius: 25px;
     cursor: pointer;
     font-size: 1rem;
     transition: all 0.3s ease;
+    font-family: 'Roboto Slab', serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-decoration: none; /* Remove underline from links */
+}
+
+.auth-btn:hover {
+    background: linear-gradient(to right, var(--button-hover-gradient-start), var(--button-hover-gradient-end));
+    color: var(--dark-bg);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+.auth-links {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.auth-links a {
+    color: var(--gt-gold);
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.auth-links a:hover {
+    text-decoration: underline;
 }
 
 .auth-btn:hover {
     background-color: var(--gt-gold);
     color: var(--dark-bg);
 }
+.search-bar {
+    margin-top: 1rem;
+}
 
+#searchInput {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid var(--gt-gold);
+    border-radius: 5px;
+    background-color: transparent;
+    color: var(--gt-gold);
+    font-family: 'Roboto Slab', serif;
+}
+#moviesList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+#moviesList li {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    cursor: pointer;
+    flex: 1 1 calc(16.66% - 1rem); /* 6 items per row */
+    max-width: calc(16.66% - 1rem); /* 6 items per row */
+}
+
+#moviesList li img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+#moviesList li .movie-title {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    color: var(--gt-gold);
+    padding: 0.5rem;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+#moviesList li:hover .movie-title {
+    opacity: 1;
+}
+/*This is getting cramped :(  Cart Section */
+.cart-title {
+    font-family: 'Roboto Slab', serif;
+    font-weight: 700;
+    color: var(--gt-gold);
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.cart-items {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.45);
+    padding: 1rem;
+    border-radius: 10px;
+    border: 2px solid var(--gt-gold);
+}
+
+.cart-item-image {
+    width: 100px;
+    height: auto;
+    border-radius: 10px;
+    margin-right: 1rem;
+}
+
+.cart-item-details {
+    flex: 1;
+}
+
+.cart-item-title {
+    font-family: 'Roboto Slab', serif;
+    font-weight: 700;
+    color: var(--gt-gold);
+    margin: 0;
+}
+
+.cart-item-quantity,
+.cart-item-price {
+    font-family: 'Roboto Slab', serif;
+    color: var(--gt-gold);
+    margin: 0.5rem 0;
+}
+
+.remove-btn {
+    padding: 0.5rem 1rem;
+    border: 2px solid var(--gt-gold);
+    background-color: var(--gt-navy);
+    color: var(--gt-gold);
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Roboto Slab', serif;
+    transition: all 0.3s ease;
+}
+
+.remove-btn:hover {
+    background-color: var(--gt-gold);
+    color: var(--dark-bg);
+}
+
+.cart-total {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.cart-total h3 {
+    font-family: 'Roboto Slab', serif;
+    font-weight: 700;
+    color: var(--gt-gold);
+}
+
+.checkout-btn {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    border: 2px solid var(--gt-gold);
+    background-color: var(--gt-navy);
+    color: var(--gt-gold);
+    border-radius: 25px;
+    cursor: pointer;
+    font-family: 'Roboto Slab', serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.checkout-btn:hover {
+    background-color: var(--gt-gold);
+    color: var(--dark-bg);
+}
 /* For When we try to implement mobile design @media (max-width: 768px) {
     .main-content {
         grid-template-columns: 1fr;
