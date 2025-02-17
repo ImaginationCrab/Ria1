@@ -3,14 +3,18 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 class User(models.Model):
     username = models.CharField(max_length=100)
     password = models.CharField(max_length=100)
+
 class Movie(models.Model):
+    movie_id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=200)
     description = models.TextField(default='No description available')
     image = models.ImageField(upload_to='movies/', default='movies/placeholder.png')
     price = models.DecimalField(max_digits=6, decimal_places=2, default=0.00)
+
     
     def __str__(self):
         return self.title
+'''
 class Review(models.Model):
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE, default=None)
     user = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
@@ -34,3 +38,4 @@ class CartItem(models.Model):
 
  #   def __str__(self):
  #       return self.name
+'''

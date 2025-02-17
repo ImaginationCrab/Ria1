@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.template import loader
-from .models import Movie, CartItem, Review, User
+from .models import Movie, User
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate
 from django.contrib.auth.forms import UserCreationForm
@@ -57,7 +57,7 @@ def moviespage(request):
     movies = Movie.objects.all()
     return render(request, "movielibrary/moviespage.html", {'movies': movies})
 
-"""
+'''
 @login_required
 def cart(request):
     cart_items = CartItem.objects.filter(user=request.user)
@@ -78,12 +78,16 @@ def remove_from_cart(request, cart_item_id):
     cart_item = get_object_or_404(CartItem, id=cart_item_id, user=request.user)
     cart_item.delete()
     return redirect("cart")
-
+'''
 def movie_detail(request, movie_id):
-    movie = get_object_or_404(Movie, id=movie_id)
-    reviews = Review.objects.filter(movie=movie)
-    return render(request, "movielibrary/movie_detail.html", {'movie': movie, 'reviews': reviews})
-
+    movie = Movie.objects.get(movie_id=movie_id)
+    template_data = {}
+    template_data['title'] = movie.title
+    template_data['movie'] = movie
+    return render(request, "movielibrary/movie_detail.html", {'template_data': template_data})
+    #reviews = Review.objects.filter(movie=movie)
+    #return render(request, "movielibrary/movie_detail.html", {'movie': movie, 'reviews': reviews})
+'''
 @login_required
 def add_review(request, movie_id):
     movie = get_object_or_404(Movie, id=movie_id)
@@ -99,4 +103,5 @@ def add_review(request, movie_id):
     else:
         form = ReviewForm()
     return render(request, "movielibrary/add_review.html", {'form': form, 'movie': movie})
-"""
+
+'''
