@@ -1,19 +1,14 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const searchInput = document.getElementById('searchInput');
-    const moviesList = document.getElementById('moviesList');
-    const movies = moviesList ? moviesList.getElementsByTagName('li') : [];
+document.getElementById('searchInput').addEventListener('input', function() {
+    var filter = this.value.toUpperCase();
+    var moviesList = document.getElementById('moviesList');
+    var movies = moviesList.getElementsByTagName('li');
 
-    if (searchInput) {
-        searchInput.addEventListener('keyup', function() {
-            const filter = searchInput.value.toLowerCase();
-            for (let i = 0; i < movies.length; i++) {
-                const movie = movies[i].textContent || movies[i].innerText;
-                if (movie.toLowerCase().indexOf(filter) > -1) {
-                    movies[i].style.display = '';
-                } else {
-                    movies[i].style.display = 'none';
-                }
-            }
-        });
+    for (var i = 0; i < movies.length; i++) {
+        var title = movies[i].getElementsByClassName('movie-title')[0];
+        if (title.innerHTML.toUpperCase().indexOf(filter) > -1) {
+            movies[i].style.display = '';
+        } else {
+            movies[i].style.display = 'none';
+        }
     }
 });

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Georgia Tech Movie Store</title>
+    <title>Add Review - Georgia Tech Movie Store</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'MovieLibrary/css/main.css' %}">
 </head>
@@ -30,12 +30,12 @@
         </div>
     </header>
 
-    <main class="main box">
+    <main class="main-box">
         <div class="main-content">
             <h2>Add Review for {{ movie.title }}</h2>
             <form method="post">
                 {% csrf_token %}
-                {{ form.as_p}}
+                {{ form.as_p }}
                 <button type="submit" class="auth-btn">Add Review</button>
             </form>
         </div>
