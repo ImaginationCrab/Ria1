@@ -34,25 +34,29 @@
         <div class="main-content">
             <h2 class="cart-title">Your Shopping Cart</h2>
             <div class="cart-items">
-                {% for item in cart_items %}
+                {% for item in template_data.movies_in_cart %}
                 <div class="cart-item">
                     <img src="{{ item.movie.image.url }}" alt="{{ item.movie.title }}" class="cart-item-image">
                     <div class="cart-item-details">
-                        <h3 class="cart-item-title">{{ item.movie.title }}</h3>
-                        <p class="cart-item-description">{{ item.movie.description }}</p>
-                        <p class="cart-item-price">Price: ${{ item.movie.price }}</p>
+                        <h3 class="cart-item-title">{{ item.title }}</h3>
+                        <p class="cart-item-description">{{ item.description }}</p>
+                        <p class="cart-item-price">Price: ${{ item.price }}</p>
                         <p class="cart-item-quantity">Quantity: {{ item.quantity }}</p>
-                        <form action="{% url 'remove_from_cart' item.id %}" method="post">
-                            {% csrf_token %}
-                            <button type="submit" class="remove-btn">Remove from Cart</button>
-                        </form>
+
                     </div>
                 </div>
                 {% endfor %}
             </div>
             <div class="cart-total">
+                {% if template_data.movies_in_cart|length > 0 %}
+        <a href="{% url 'cart.clear' %}">
+          <button class="btn btn-danger mb-2">
+            Remove all movies from Cart
+          </button>
+        </a>
+        {% endif %}
                 <h3>Total: ${{ total_price }}</h3>
-                <form action="{% url 'checkout' %}" method="post">
+                <form action="{% url 'cart.purchase' %}" method="post">
                     {% csrf_token %}
                     <button type="submit" class="checkout-btn">Checkout</button>
                 </form>

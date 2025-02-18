@@ -19,7 +19,7 @@
             </div>
             <div class="header-column nav-links">
                 <nav>
-                    <a href="/about">About</a>
+                    <a href="/">About</a>
                     <a href="/moviespage">Movies</a>
                     <a href="/account">Account</a>
                     <a href="/cart">Cart</a>
@@ -42,20 +42,9 @@
                 </form>
             </section>
 
-            <section class="reviews">
-                <h3>Your Reviews</h3>
-                <ul>
-                    {% for review in user.reviews.all %}
-                        <li>
-                            <h4>{{ review.movie.title }}</h4>
-                            <p>{{ review.content }}</p>
-                            <small>Rating: {{ review.rating }}</small>
-                        </li>
-                    {% empty %}
-                        <li>You have not made any reviews yet.</li>
-                    {% endfor %}
-                </ul>
-            </section>
+            <a class="nav-link"
+              href="{% url 'accounts.orders' %}">Orders
+            </a>
         </div>
     </main>
 

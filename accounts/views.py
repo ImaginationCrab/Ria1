@@ -1,8 +1,10 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from django.shortcuts import redirect
 from django.contrib.auth import login as auth_login, authenticate
 # Create your views here.
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 def registration(request):
     template_data = {}
     template_data['title'] = 'Sign Up'
@@ -39,3 +41,11 @@ def login(request):
         else:
             auth_login(request, user)
             return redirect('/moviespage/')
+
+@login_required
+def orders(request):
+    template_data = {}
+    template_data['title'] = 'Orders'
+    template_data['orders'] = request.user.order_set.all()
+    return render(request, 'accounts/orders.html',
+        {'template_data': template_data})
