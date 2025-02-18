@@ -13,5 +13,8 @@ urlpatterns = [
 #    path("add_to_cart/<int:movie_id>/", views.add_to_cart, name="add_to_cart"),
 #    path("remove_from_cart/<int:cart_item_id>/", views.remove_from_cart, name="remove_from_cart"),
     path("movie/<int:movie_id>/", views.movie_detail, name="movie_detail"),
-    #path("movie/<int:movie_id>/add_review/", views.add_review, name="add_review"),
+    path("movie/<int:movie_id>/add_review/", views.create_review, name='movies.create_review'),
+    path('<int:movie_id>/review/<int:review_id>/edit/', views.edit_review, name='movies.edit_review'),
+
+    path('<int:movie_id>/review/<int:review_id>/delete/', views.delete_review, name='movies.delete_review'),
 ]

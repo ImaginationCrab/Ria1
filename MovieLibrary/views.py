@@ -1,7 +1,7 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.template import loader
-from .models import Movie
+from .models import Movie, Review
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate
 from django.contrib.auth.forms import UserCreationForm
@@ -101,27 +101,60 @@ def remove_from_cart(request, cart_item_id):
 '''
 def movie_detail(request, movie_id):
     movie = Movie.objects.get(movie_id=movie_id)
+    reviews = Review.objects.filter(movie=movie)
     template_data = {}
     template_data['title'] = movie.title
     template_data['movie'] = movie
+    template_data['reviews'] = reviews
     return render(request, "movielibrary/movie_detail.html", {'template_data': template_data})
     #reviews = Review.objects.filter(movie=movie)
     #return render(request, "movielibrary/movie_detail.html", {'movie': movie, 'reviews': reviews})
 '''
 @login_required
 def add_review(request, movie_id):
-    movie = get_object_or_404(Movie, id=movie_id)
-    
-    if request.method == "POST":
-        form = ReviewForm(request.POST)
-        if form.is_valid():
-            review = form.save(commit=False)
-            review.movie = movie
-            review.user = User.objects.get(id=request.user.id)
+    movie = Movie.objects.get(movie_id=movie_id)
+    if request.method == 'POST' and request.POST['comment'] != '':
+            review = Review()
+            review.comment = request.POST['comment']
+            review.user = request.user
             review.save()
             return redirect("movie_detail", movie_id=movie.id)
     else:
-        form = ReviewForm()
-    return render(request, "movielibrary/add_review.html", {'form': form, 'movie': movie})
-
+        return redirect("movie_detail", movie_id=movie.id)
 '''
+@login_required
+def create_review(request, movie_id):
+    if request.method == 'POST' and request.POST['comment'] != '':
+        movie = Movie.objects.get(movie_id=movie_id)
+        review = Review()
+        review.comment = request.POST['comment']
+        review.movie = movie
+        review.user = request.user
+        review.save()
+        return redirect('movie_detail', movie_id=movie_id)
+    else:
+        return redirect('movie_detail', movie_id=movie_id)
+@login_required
+def edit_review(request, movie_id, review_id):
+    review = get_object_or_404(Review, id=review_id)
+    if request.user != review.user:
+        return redirect('movie_detail', movie_id=movie_id)
+    if request.method == 'GET':
+        template_data = {}
+        template_data['title'] = 'Edit Review'
+        template_data['review'] = review
+        return render(request, 'MovieLibrary/edit_review.html',
+            {'template_data': template_data})
+    elif request.method == 'POST' and request.POST['comment'] != '':
+        review = Review.objects.get(id=review_id)
+        review.comment = request.POST['comment']
+        review.save()
+        return redirect('movie_detail', movie_id=movie_id)
+    else:
+        return redirect('movie_detail', movie_id=movie_id)
+@login_required
+def delete_review(request, movie_id, review_id):
+    review = get_object_or_404(Review, id=review_id,
+        user=request.user)
+    review.delete()
+    return redirect('movie_detail', movie_id=movie_id)

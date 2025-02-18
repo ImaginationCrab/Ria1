@@ -1,5 +1,6 @@
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
+from django.contrib.auth.models import User
 
 class Movie(models.Model):
     movie_id = models.AutoField(primary_key=True)
@@ -11,16 +12,16 @@ class Movie(models.Model):
     
     def __str__(self):
         return self.title
-'''
+
 class Review(models.Model):
+    id = models.AutoField(primary_key=True)
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE, default=None)
     user = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
-    text = models.TextField(default='No review available')
+    comment = models.CharField(max_length=255)
     rating = models.PositiveIntegerField(default=0, validators=[MinValueValidator(0), MaxValueValidator(5)])
-    
     def __str__(self):
         return f"Review by {self.user.username} on {self.movie.title}"
-
+'''
 class CartItem(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE, default=None)
