@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.template import loader
-from .models import Movie, User
+from .models import Movie
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate
 from django.contrib.auth.forms import UserCreationForm
@@ -23,7 +23,27 @@ def registration(request):
     else:
         form = UserCreationForm()
     return render(request, "movielibrary/registration.html", {'form': form})
-
+'''
+def login(request):
+    template_data = {}
+    template_data['title'] = 'Login'
+    if request.method == 'GET':
+        return render(request, 'MovieLibrary/login.html',
+            {'template_data': template_data})
+    elif request.method == 'POST':
+        user = authenticate(
+            request,
+            username = request.POST['username'],
+            password = request.POST['password']
+        )
+        if user is None:
+            template_data['error'] = 'The username or password is incorrect.'
+            return render(request, 'MovieLibrary/login.html',
+                {'template_data': template_data})
+        else:
+            auth_login(request, user)
+            return redirect('')
+'''
 def login(request):
     if request.method == "POST":
         form = AuthenticationForm(request, data=request.POST)
@@ -33,7 +53,7 @@ def login(request):
             user = authenticate(request, username=username, password=password)
             if user is not None:
                 auth_login(request, user)
-                return redirect("home")
+                return redirect("moviespage")
     else:
         form = AuthenticationForm()
     return render(request, "movielibrary/login.html", {'form': form})

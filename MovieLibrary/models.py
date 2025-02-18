@@ -1,8 +1,5 @@
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
-class User(models.Model):
-    username = models.CharField(max_length=100)
-    password = models.CharField(max_length=100)
 
 class Movie(models.Model):
     movie_id = models.AutoField(primary_key=True)
@@ -39,3 +36,4 @@ class CartItem(models.Model):
  #   def __str__(self):
  #       return self.name
 '''
+#                <a href="{% url 'add_review' movie.id %}" class="review-btn">Add Review</a>

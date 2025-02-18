@@ -1,9 +1,10 @@
 from django.contrib import admin
-from .models import Movie, User
+from .models import Movie
 
 # Register your models here.
-class UserAdmin(admin.ModelAdmin):
-    fields = ["username","password"]
+class MovieAdmin(admin.ModelAdmin):
+    ordering = ['title']
+    search_fields = ['title']
 
-admin.site.register(Movie)
-admin.site.register(User, UserAdmin)
+
+admin.site.register(Movie, MovieAdmin)

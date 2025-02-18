@@ -23,9 +23,9 @@
                 <div class="LoginRegister-section">
                     <h3 class="auth-title">Register New Account</h3>
                     <div class="auth-form">
-                        <form method="post">
+                        <form method="POST">
                             {% csrf_token %}
-                            {{form.as_p}}
+                            {{template_data.form.as_p}}
                             <button type="submit" class="auth-btn">Register</button>
                         </form>
                     </div>
@@ -35,7 +35,7 @@
     </main>
 
 
-    
+
 
     <script src="{% static 'MovieLibrary/js/main.js' %}"></script>
 </body>
