@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.template import loader
 from .models import Movie, Review
 from django.contrib.auth.decorators import login_required
@@ -8,6 +8,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout as auth_logout
 from django.contrib.auth.forms import AuthenticationForm
+
 # from .forms import ReviewForm
 
 def landing(request):
@@ -44,7 +45,8 @@ def login(request):
             auth_login(request, user)
             return redirect('')
 '''
-def login(request):
+
+'''def login(request):
     if request.method == "POST":
         form = AuthenticationForm(request, data=request.POST)
         if form.is_valid():
@@ -57,7 +59,7 @@ def login(request):
     else:
         form = AuthenticationForm()
     return render(request, "movielibrary/login.html", {'form': form})
-
+'''
 def logout(request):
     auth_logout(request)
     return redirect("landing")
@@ -101,14 +103,20 @@ def remove_from_cart(request, cart_item_id):
 '''
 def movie_detail(request, movie_id):
     movie = Movie.objects.get(movie_id=movie_id)
-    reviews = Review.objects.filter(movie=movie)
-    template_data = {}
-    template_data['title'] = movie.title
-    template_data['movie'] = movie
-    template_data['reviews'] = reviews
+    reviews = Review.objects.filter(movie=movie)[:20]
+    template_data = {
+        'title': movie.title,
+        'movie': movie,
+        'reviews': reviews,
+    }
     return render(request, "movielibrary/movie_detail.html", {'template_data': template_data})
-    #reviews = Review.objects.filter(movie=movie)
-    #return render(request, "movielibrary/movie_detail.html", {'movie': movie, 'reviews': reviews})
+
+def load_more_reviews(request, movie_id):
+    offset = int(request.GET.get('offset', 0))
+    movie = Movie.objects.get(movie_id=movie_id)
+    reviews = Review.objects.filter(movie=movie)[offset:offset+20]
+    reviews_data = [{'user': {'username': review.user.username}, 'comment': review.comment} for review in reviews]
+    return JsonResponse({'reviews': reviews_data})
 '''
 @login_required
 def add_review(request, movie_id):
