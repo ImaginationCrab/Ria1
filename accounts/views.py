@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.shortcuts import redirect
 from django.contrib.auth import login as auth_login, authenticate
 # Create your views here.
-from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm
+from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm, AuthenticationForm
 from django.contrib.auth.models import User
 from pyexpat.errors import messages
 from django.contrib.auth import update_session_auth_hash
@@ -27,24 +27,18 @@ def registration(request):
                           {'template_data': template_data})
 
 def login(request):
-    template_data = {}
-    template_data['title'] = 'Login'
-    if request.method == 'GET':
-        return render(request, 'movielibrary/login.html',
-            {'template_data': template_data})
-    elif request.method == 'POST':
-        user = authenticate(
-            request,
-            username = request.POST['username'],
-            password = request.POST['password']
-        )
-        if user is None:
-            template_data['error'] = 'The username or password is incorrect.'
-            return render(request, 'movielibrary/login.html',
-                {'template_data': template_data})
-        else:
-            auth_login(request, user)
-            return redirect('/moviespage/')
+    if request.method == "POST":
+        form = AuthenticationForm(request, data=request.POST)
+        if form.is_valid():
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
+            user = authenticate(request, username=username, password=password)
+            if user is not None:
+                auth_login(request, user)
+                return redirect("moviespage")
+    else:
+        form = AuthenticationForm()
+    return render(request, "movielibrary/login.html", {'form': form})
 
 @login_required
 def orders(request):
