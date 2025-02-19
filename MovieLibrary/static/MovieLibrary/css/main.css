@@ -428,7 +428,7 @@ body { /*Style Settings for the body*/
     background-color: black; /* Changed background color to black */
     color: var(--gt-gold);
     font-family: 'Roboto Slab', serif;
-    margin: 0 auto; /* Center the comment box */
+    margin: 0 auto; /* Center the comment box EEE */ 
     display: block; /* Ensure the comment box is displayed as a block element */
     box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
 }
