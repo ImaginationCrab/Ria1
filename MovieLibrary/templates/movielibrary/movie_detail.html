@@ -84,22 +84,21 @@
             <ul class="list-group">
                 {% for review in template_data.reviews %}
                 <li class="list-group-item pb-3 pt-3">
-                  <h5 class="card-title">
+                <h5 class="card-title">
                     Review by {{ review.user.username }}
-                  </h5>
-                  <h6 class="card-subtitle mb-2 text-muted">
+                </h5>
+                <h6 class="card-subtitle mb-2 text-muted">
                     {{ review.date }}
-                  </h6>
-                  <p class="card-text">{{ review.comment }}</p>
+                </h6>
+                <p class="card-text">{{ review.comment }}</p>
+                {% if user.is_authenticated and user == review.user %}
+                    <a class="auth-btn" href="{% url 'movies.edit_review' movie_id=template_data.movie.movie_id review_id=review.id %}">Edit</a>
+                    <form method="POST" action="{% url 'movies.delete_review' movie_id=template_data.movie.movie_id review_id=review.id %}" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit" class="auth-btn">Delete</button>
+                    </form>
+                {% endif %}
                 </li>
-                    {% if user.is_authenticated and user == review.user %}
-                  <button class="auth-btn"
-                    href="{% url 'movies.edit_review' movie_id=template_data.movie.movie_id review_id=review.id %}" class="auth-btn">Edit
-                  </button>
-                        <button class="auth-btn"
-                    href="{% url 'movies.delete_review' movie_id=template_data.movie.movie_id review_id=review.id %}" class="auth-btn">Delete
-                  </button>
-                  {% endif %}
                 {% endfor %}
               </ul>
         </div>
