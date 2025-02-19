@@ -10,6 +10,21 @@ def index(request):
     movies_in_cart = []
     cart = request.session.get('cart', {})
     movie_ids = list(cart.keys())
+    if movie_ids:
+        movies_in_cart = Movie.objects.filter(movie_id__in=movie_ids)
+        for movie in movies_in_cart:
+            movie.quantity = cart[str(movie.movie_id)]
+        cart_total = calculate_cart_total(cart, movies_in_cart)
+    template_data = {}
+    template_data['title'] = 'Cart'
+    template_data['movies_in_cart'] = movies_in_cart
+    template_data['cart_total'] = cart_total
+    return render(request, 'cart/cart.html', {'template_data': template_data})
+'''def index(request):
+    cart_total = 0
+    movies_in_cart = []
+    cart = request.session.get('cart', {})
+    movie_ids = list(cart.keys())
     if (movie_ids != []):
         movies_in_cart = Movie.objects.filter(movie_id__in=movie_ids)
         cart_total = calculate_cart_total(cart, movies_in_cart)
@@ -17,7 +32,7 @@ def index(request):
     template_data['title'] = 'Cart'
     template_data['movies_in_cart'] = movies_in_cart
     template_data['cart_total'] = cart_total
-    return render(request, 'cart/cart.html',{'template_data': template_data})
+    return render(request, 'cart/cart.html',{'template_data': template_data})'''
 def add(request, movie_id):
     get_object_or_404(Movie, movie_id=movie_id)
     cart = request.session.get('cart', {})

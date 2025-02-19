@@ -30,6 +30,7 @@ body { /*Style Settings for the body*/
     border-radius: 25px;
     border: 2px solid var(--gt-gold);
     margin: 1rem;
+    width 
 }
 
 .header-content {
@@ -37,7 +38,7 @@ body { /*Style Settings for the body*/
     align-items: center;
     justify-content: space-between;
     gap: 1rem;
-    max-width: 1200px;
+    max-width: 150rem;
     margin: 0 auto;
     position: relative;
 }
@@ -385,8 +386,302 @@ body { /*Style Settings for the body*/
     background-color: var(--gt-gold);
     color: var(--dark-bg);
 }
+.comment-box {
+    width: 50;
+    height: 200px;
+    padding: 1rem;
+    border-radius: 10px;
+    border: 2px solid var(--gt-gold);
+    background-color: black; /* Changed background color to black */
+    color: var(--gt-gold);
+    font-family: 'Roboto Slab', serif;
+    margin: 0 auto; /* Center the comment box */
+    display: block; /* Ensure the comment box is displayed as a block element */
+    box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
+}
+
+.edit-review-btn {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    border: 2px solid var(--gt-gold);
+    background-color: var(--gt-navy);
+    color: var(--gt-gold);
+    border-radius: 25px;
+    cursor: pointer;
+    font-family: 'Roboto Slab', serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.edit-review-btn:hover {
+    background-color: var(--gt-gold);
+    color: var(--dark-bg);
+}
+.comment-box {
+    width: 100%;
+    height: 200px;
+    padding: 1rem;
+    border-radius: 10px;
+    border: 2px solid var(--gt-gold);
+    background-color: black; /* Changed background color to black */
+    color: var(--gt-gold);
+    font-family: 'Roboto Slab', serif;
+    margin: 0 auto; /* Center the comment box */
+    display: block; /* Ensure the comment box is displayed as a block element */
+    box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
+}
+
+.auth-btn {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    border: 2px solid var(--gt-gold);
+    background-color: var(--gt-navy);
+    color: var(--gt-gold);
+    border-radius: 25px;
+    cursor: pointer;
+    font-family: 'Roboto Slab', serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.auth-btn:hover {
+    background-color: var(--gt-gold);
+    color: var(--dark-bg);
+}
+
+.main-box {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 1rem;
+    border-radius: 25px;
+    border: 2px solid var(--gt-gold);
+    background-color: rgba(0, 0, 0, 0.45);
+}
+
+.reviews-box {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 1rem;
+    border-radius: 25px;
+    border: 2px solid var(--gt-gold);
+    background-color: rgba(0, 0, 0, 0.45);
+}
+
+.reviews-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color : var(--gt-gold);
+    font: 'Roboto Slab', serif;
+}
+
+@media (max-width: 768px) {
+    .main-box, .reviews-box {
+        width: 90%;
+        padding: 1rem;
+    }
+
+    .comment-box {
+        height: 150px;
+    }
+
+    .auth-btn {
+        width: 100%;
+        padding: 0.8rem;
+    }
+}
+.form-control quantity-input:hover{
+    background-color: var(--gt-gold);
+    color: var(--dark-bg);
+}
+.content-wrapper {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 2rem;
+    margin: 2rem auto;
+    max-width: 1200px;
+}
+
+.image-container {
+    flex: 1;
+    max-width: 300px;
+}
+
+.movie-image {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.main-box {
+    flex: 2;
+    padding: 1rem;
+    border-radius: 25px;
+    border: 2px solid var(--gt-gold);
+    background-color: rgba(0, 0, 0, 0.45);
+}
+
+.reviews-box {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 1rem;
+    border-radius: 25px;
+    border: 2px solid var(--gt-gold);
+    background-color: rgba(0, 0, 0, 0.45);
+}
+
+.reviews-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.auth-btn {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    border: 2px solid var(--gt-gold);
+    background-color: var(--gt-navy);
+    color: var(--gt-gold);
+    border-radius: 25px;
+    cursor: pointer;
+    font-family: 'Roboto Slab', serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    width: 10rem;
+}
+
+.auth-btn:hover {
+    background-color: var(--gt-gold);
+    color: var(--dark-bg);
+}
+
+@media (max-width: 768px) {
+    .content-wrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .image-container {
+        max-width: 100%;
+    }
+
+    .main-box {
+    }
+
+    .reviews-box {
+        width: 90%;
+        padding: 1rem;
+    }
+
+    .auth-btn {
+        width: 10rem;
+        padding: 0.8rem;
+    }
+}
+.quantity-input {
+    background-color: var(--dark-bg);
+    color: var(--gt-gold);
+    border: 2px solid var(--gt-gold);
+    font-family: 'Roboto Slab', serif;
+    border-radius: 5px;
+}
+.image-container {
+    flex: 1;
+    max-width: 300px;
+}
+
+.movie-image {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+.cart-item-details {
+    flex: 1;
+}
+
+.cart-title {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.cart-total {
+    text-align: center;
+    margin-top: 2rem;
+}
+.table {
+    width: 100%;
+    margin-bottom: 1rem;
+    color: var(--gt-gold);
+    background-color: var(--dark-bg);
+    border: 2px solid var(--gt-gold);
+    font-family: 'Roboto Slab', serif;
+}
+
+.table th,
+.table td {
+    padding: 0.75rem;
+    vertical-align: top;
+    border-top: 1px solid var(--gt-gold);
+}
+
+.table thead th {
+    vertical-align: bottom;
+    border-bottom: 2px solid var(--gt-gold);
+}
+
+.table-bordered {
+    border: 2px solid var(--gt-gold);
+}
+
+.table-bordered th,
+.table-bordered td {
+    border: 1px solid var(--gt-gold);
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.table-hover tbody tr:hover {
+    background-color: rgba(0, 0, 0, 0.075);
+}
+
+.table-dark {
+    color: var(--gt-gold);
+    background-color: var(--dark-bg);
+}
+
+.table-dark th,
+.table-dark td,
+.table-dark thead th {
+    border-color: var(--gt-gold);
+}
+
+.table-dark.table-bordered {
+    border: 2px solid var(--gt-gold);
+}
+
+.text-center {
+    text-align: center;
+}
+
+.mt-3 {
+    margin-top: 1rem;
+}
+
 /* For When we try to implement mobile design @media (max-width: 768px) {
     .main-content {
         grid-template-columns: 1fr;
     }  }*/
-}
+  

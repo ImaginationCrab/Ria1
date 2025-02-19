@@ -24,9 +24,6 @@
                     <a href="/cart">Cart</a>
                 </nav>
             </div>
-            <div class="header-column search-bar">
-                <input type="text" id="searchInput" placeholder="Search for movies...">
-            </div>
         </div>
     </header>
 
@@ -36,26 +33,23 @@
             <div class="cart-items">
                 {% for item in template_data.movies_in_cart %}
                 <div class="cart-item">
-                    <img src="{{ item.movie.image.url }}" alt="{{ item.movie.title }}" class="cart-item-image">
                     <div class="cart-item-details">
                         <h3 class="cart-item-title">{{ item.title }}</h3>
                         <p class="cart-item-description">{{ item.description }}</p>
                         <p class="cart-item-price">Price: ${{ item.price }}</p>
                         <p class="cart-item-quantity">Quantity: {{ item.quantity }}</p>
-
                     </div>
+                    <img src="{{ item.image.url }}" alt="{{ item.title }}" class="cart-item-image">
                 </div>
                 {% endfor %}
             </div>
             <div class="cart-total">
                 {% if template_data.movies_in_cart|length > 0 %}
-        <a href="{% url 'cart.clear' %}">
-          <button class="btn btn-danger mb-2">
-            Remove all movies from Cart
-          </button>
-        </a>
-        {% endif %}
-                <h3>Total: ${{ total_price }}</h3>
+                <a href="{% url 'cart.clear' %}">
+                    <button class="checkout-btn">Remove all movies from Cart</button>
+                </a>
+                {% endif %}
+                <h3>Total: ${{ template_data.cart_total }}</h3>
                 <form action="{% url 'cart.purchase' %}" method="post">
                     {% csrf_token %}
                     <button type="submit" class="checkout-btn">Checkout</button>

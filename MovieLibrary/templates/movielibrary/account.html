@@ -25,16 +25,12 @@
                     <a href="/cart">Cart</a>
                 </nav>
             </div>
-            <div class="header-column search-bar">
-                <input type="text" id="searchInput" placeholder="Search for movies...">
-            </div>
         </div>
     </header>
 
     <main class="main-box">
         <div class="main-content">
             <section class="profile">
-                <img src="{{ user.profile_image.url }}" alt="Profile Image" class="profile-image">
                 <h2>{{ user.username }}</h2>
                 <form action="{% url 'accounts.change_password' %}" method="post">
                     {% csrf_token %}
@@ -46,7 +42,7 @@
                 </form>
             </section>
 
-            <a class="nav-link"
+            <a class="auth-btn"
               href="{% url 'accounts.orders' %}">Orders
             </a>
         </div>

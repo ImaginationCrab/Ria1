@@ -41,11 +41,8 @@
             <div class="main-column auth-section">
                 <h3 class="auth-title">Welcome, {{ user.username }}! You can now browse our list of movies.</h3>
                 <div class="auth-links">
-                    <a href="/account">Account</a>
-                    <a href="/moviespage">Movies</a>
-                </div>
-                <div class="search-bar">
-                    <input type="text" id="searchInput" placeholder="Search for movies...">
+                    <a href="/account" class="auth-btn">Account</a>
+                    <a href="/moviespage" class="auth-btn">Movies</a>
                 </div>
             </div>
             {% else %}
@@ -53,7 +50,7 @@
                 <h3 class="auth-title">Account Sign-in</h3>
                 <div class="auth-buttons">
                     <a href="accounts/registration" class="auth-btn">Register</a>
-                    <a href="/login" class="auth-btn">Login</a>
+                    <a href="accounts/login" class="auth-btn">Login</a>
                 </div>
             </div>
             {% endif %}
