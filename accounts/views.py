@@ -20,7 +20,7 @@ def registration(request):
         form = UserCreationForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('moviespage')
+            return redirect('landing')
         else:
             template_data['form'] = form
             return render(request, 'accounts/registration.html',
