@@ -30,7 +30,7 @@ def login(request):
     template_data = {}
     template_data['title'] = 'Login'
     if request.method == 'GET':
-        return render(request, 'accounts/login.html',
+        return render(request, 'movielibrary/login.html',
             {'template_data': template_data})
     elif request.method == 'POST':
         user = authenticate(
@@ -40,7 +40,7 @@ def login(request):
         )
         if user is None:
             template_data['error'] = 'The username or password is incorrect.'
-            return render(request, 'accounts/login.html',
+            return render(request, 'movielibrary/login.html',
                 {'template_data': template_data})
         else:
             auth_login(request, user)
