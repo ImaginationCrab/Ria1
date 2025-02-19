@@ -36,6 +36,10 @@
             <section class="profile">
                 <img src="{{ user.profile_image.url }}" alt="Profile Image" class="profile-image">
                 <h2>{{ user.username }}</h2>
+                <form action="{% url 'accounts.change_password' %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="auth-btn">Change Password</button>
+                </form>
                 <form action="{% url 'logout' %}" method="post">
                     {% csrf_token %}
                     <button type="submit" class="auth-btn">Log Out</button>
