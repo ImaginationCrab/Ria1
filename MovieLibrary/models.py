@@ -13,10 +13,10 @@ class Review(models.Model):
     text = models.CharField(max_length=300)
 
 
-#class Movie(models.Model):
-    #title = models.CharField(max_length=100)
+class Movie(models.Model):
+    title = models.CharField(max_length=100)
     #description = models.TextField()
-    #rating = models.FloatField(default=0)
+    rating = models.FloatField(default=0)
     #reviews = models.ForeignKey(Review, on_delete=models.CASCADE)
 
 

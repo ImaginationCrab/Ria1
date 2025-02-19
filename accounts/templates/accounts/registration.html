@@ -17,18 +17,16 @@
         </div>
     </header>
 
+
     <main class="main-box">
         <div class="main-content">
-                <div class="Login/Register-section">
+                <div class="LoginRegister-section">
                     <h3 class="auth-title">Register New Account</h3>
                     <div class="auth-form">
-                        <form action="/register" method="post">
-                            <label for="username">Username:</label>
-                            <input type="text" id="username" name="username" required>
-                            <label for="password">Password:</label>
-                            <input type="password" id="password" name="password" required>
-
-                            <button type="submit" class:auth-button>Register</button>
+                        <form method="POST">
+                            {% csrf_token %}
+                            {{template_data.form.as_p}}
+                            <button type="submit" class="auth-btn">Register</button>
                         </form>
                     </div>
                     </div>
@@ -37,7 +35,7 @@
     </main>
 
 
-    
+
 
     <script src="{% static 'MovieLibrary/js/main.js' %}"></script>
 </body>
